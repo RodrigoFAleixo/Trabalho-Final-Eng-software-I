@@ -9,7 +9,7 @@ import java.util.*;
 /**
  * StockerDAO
  *
- * CRUD + consultas “overall” para a tabela repositor.
+ * CRUD + consultas overall para a tabela repositor.
  */
 public class StockerDAO {
 

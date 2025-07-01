@@ -1,15 +1,15 @@
 package dao;
 
 
-import dto.ManagerDTO;
 import conn.ConnectionDB;
+import dto.ManagerDTO;
 import java.sql.*;
 import java.util.*;
 
 /**
  * GerenteDAO
  *
- * CRUD + consultas “overall” para a tabela gerente.
+ * CRUD + consultas "overall" para a tabela gerente.
  */
 public class ManagerDAO {
 
