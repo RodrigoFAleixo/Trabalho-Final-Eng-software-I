@@ -1,4 +1,4 @@
-package registrations;
+package reg;
 
 
 import dao.CashierDAO;

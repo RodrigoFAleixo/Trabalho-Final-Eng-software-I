@@ -15,7 +15,7 @@ public class StockerDAO {
 
     // CREATE
     public void inserir(StockerDTO r) {
-        String sql = "INSERT INTO repositor(cpf,nome,salario,setor) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO repositor(cpf,\"name\",wage,sector) VALUES (?,?,?,?)";
         try (Connection conn = ConnectionDB.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
@@ -31,7 +31,7 @@ public class StockerDAO {
 
     // READ by CPF
     public StockerDTO buscarPorCpf(String cpf) {
-        String sql = "SELECT cpf,nome,salario,setor FROM repositor WHERE cpf = ?";
+        String sql = "SELECT cpf,\"name\",wage,sector FROM repositor WHERE cpf = ?";
         try (Connection conn = ConnectionDB.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
@@ -40,9 +40,9 @@ public class StockerDAO {
                 if (rs.next()) {
                     return new StockerDTO(
                         rs.getString("cpf"),
-                        rs.getString("\"name\""),
-                        rs.getDouble("salario"),
-                        rs.getString("setor")
+                        rs.getString("name"),
+                        rs.getDouble("wage"),
+                        rs.getString("sector")
                     );
                 }
             }
@@ -54,7 +54,7 @@ public class StockerDAO {
 
     // READ all
     public List<StockerDTO> listarTodos() {
-        String sql = "SELECT cpf,nome,salario,setor FROM repositor";
+        String sql = "SELECT cpf,\"name\",wage,sector FROM repositor";
         List<StockerDTO> lista = new ArrayList<>();
         try (Connection conn = ConnectionDB.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql);
@@ -63,9 +63,9 @@ public class StockerDAO {
             while (rs.next()) {
                 lista.add(new StockerDTO(
                     rs.getString("cpf"),
-                    rs.getString("\"nome\""),
-                    rs.getDouble("salario"),
-                    rs.getString("setor")
+                    rs.getString("name"),
+                    rs.getDouble("wage"),
+                    rs.getString("sector")
                 ));
             }
             return lista;
@@ -76,7 +76,7 @@ public class StockerDAO {
 
     // UPDATE
     public void atualizar(StockerDTO r) {
-        String sql = "UPDATE repositor SET nome = ?, salario = ?, setor = ? WHERE cpf = ?";
+        String sql = "UPDATE repositor SET \"name\" = ?, salario = ?, setor = ? WHERE cpf = ?";
         try (Connection conn = ConnectionDB.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 

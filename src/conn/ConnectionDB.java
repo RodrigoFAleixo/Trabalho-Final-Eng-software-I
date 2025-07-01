@@ -28,16 +28,15 @@ public class ConnectionDB {
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 
-    // Método main apenas para testar.
-    // public static void main(String[] args) {
-    //     try (Connection conn = ConnectionDB.getConnection()) {
-    //         System.out.println("Conectado? " + (conn != null && !conn.isClosed()));
-    //     } catch (SQLException e) {
-    //         System.err.println("Erro ao conectar: " + e.getMessage());
-    //         // Se for erro de autenticação, verifique:
-    //         // 1) Usuário/senha estão criados no Postgres?
-    //         // 2) Você não está usando 'root' por engano (o default é 'postgres').
-    //     }
-    // }
+    public static void main(String[] args) {
+        try (Connection conn = ConnectionDB.getConnection()) {
+            System.out.println("Conectado? " + (conn != null && !conn.isClosed()));
+        } catch (SQLException e) {
+            System.err.println("Erro ao conectar: " + e.getMessage());
+            // Se for erro de autenticação, verifique:
+            // 1) Usuário/senha estão criados no Postgres?
+            // 2) Você não está usando 'root' por engano (o default é 'postgres').
+        }
+    }
 }
 

@@ -40,7 +40,7 @@ public class ManagerDAO {
                 if (rs.next()) {
                     return new ManagerDTO(
                         rs.getString("cpf"),
-                        rs.getString("\"name\""),
+                        rs.getString("name"),
                         rs.getDouble("wage"),
                         rs.getString("sector")
                     );
@@ -63,7 +63,7 @@ public class ManagerDAO {
             while (rs.next()) {
                 lista.add(new ManagerDTO(
                     rs.getString("cpf"),
-                    rs.getString("\"name\""),
+                    rs.getString("name"),
                     rs.getDouble("wage"),
                     rs.getString("sector")
                 ));

@@ -8,7 +8,7 @@ import java.util.*;
 public class CashierDAO {
 
     public void inserir(CashierDTO c) {
-        String sql = "INSERT INTO caixa(cpf,\"name\",wage,sector) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO cashier(cpf,\"name\",wage,sector) VALUES(?,?,?,?)";
         try (Connection conn = ConnectionDB.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
@@ -31,7 +31,7 @@ public class CashierDAO {
                 if (rs.next()) {
                     return new CashierDTO(
                         rs.getString("cpf"),
-                        rs.getString("\"name\""),
+                        rs.getString("name"),
                         rs.getDouble("wage"),
                         rs.getString("sector")
                     );
@@ -52,9 +52,9 @@ public class CashierDAO {
             while (rs.next()) {
                 lista.add(new CashierDTO(
                     rs.getString("cpf"),
-                    rs.getString("nome"),
-                    rs.getDouble("salario"),
-                    rs.getString("setor")
+                    rs.getString("name"),
+                    rs.getDouble("wage"),
+                    rs.getString("sector")
                 ));
             }
             return lista;

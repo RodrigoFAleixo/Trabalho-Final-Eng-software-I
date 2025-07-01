@@ -11,7 +11,7 @@ public class ClientDAO {
 
     // CREATE
     public void inserir(ClientDTO c) {
-        String sql = "INSERT INTO cliente(cpf,nome,email,setor) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO client(cpf,\"name\",email,sector) VALUES (?,?,?,?)";
         try (Connection conn = ConnectionDB.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
@@ -27,7 +27,7 @@ public class ClientDAO {
 
     // READ by CPF
     public ClientDTO buscarPorCpf(String cpf) {
-        String sql = "SELECT cpf,nome,email,setor FROM cliente WHERE cpf = ?";
+        String sql = "SELECT cpf,\"name\",email,sector FROM client WHERE cpf = ?";
         try (Connection conn = ConnectionDB.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
@@ -36,9 +36,9 @@ public class ClientDAO {
                 if (rs.next()) {
                     return new ClientDTO(
                         rs.getString("cpf"),
-                        rs.getString("nome"),
+                        rs.getString("name"),
                         rs.getString("email"),
-                        rs.getString("setor")
+                        rs.getString("sector")
                     );
                 }
             }
@@ -50,7 +50,7 @@ public class ClientDAO {
 
     // READ all
     public List<ClientDTO> listarTodos() {
-        String sql = "SELECT cpf,nome,email,setor FROM cliente";
+        String sql = "SELECT cpf,\"name\",email,sector FROM client";
         List<ClientDTO> lista = new ArrayList<>();
         try (Connection conn = ConnectionDB.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql);
@@ -59,9 +59,9 @@ public class ClientDAO {
             while (rs.next()) {
                 lista.add(new ClientDTO(
                     rs.getString("cpf"),
-                    rs.getString("nome"),
+                    rs.getString("name"),
                     rs.getString("email"),
-                    rs.getString("setor")
+                    rs.getString("sector")
                 ));
             }
             return lista;
@@ -72,7 +72,7 @@ public class ClientDAO {
 
     // UPDATE
     public void atualizar(ClientDTO c) {
-        String sql = "UPDATE cliente SET nome=?, email=?, setor=? WHERE cpf=?";
+        String sql = "UPDATE client SET \"name\"=?, email=?, sector=? WHERE cpf=?";
         try (Connection conn = ConnectionDB.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
@@ -88,7 +88,7 @@ public class ClientDAO {
 
     // DELETE
     public void deletar(String cpf) {
-        String sql = "DELETE FROM cliente WHERE cpf=?";
+        String sql = "DELETE FROM client WHERE cpf=?";
         try (Connection conn = ConnectionDB.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
