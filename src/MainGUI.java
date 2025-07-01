@@ -5,7 +5,7 @@ public class MainGUI extends JFrame {
     public MainGUI() {
         setTitle("Supermercado - Menu Principal");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 300);
+        setSize(800, 600);
         setLocationRelativeTo(null);
         setLayout(new GridLayout(6, 1, 10, 10));
 
